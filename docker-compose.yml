@@ -1,0 +1,36 @@
+services:
+  mysql:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: productosdb
+      MYSQL_USER: appuser
+      MYSQL_PASSWORD: apppass
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  app:
+    build: .
+    depends_on:
+      - mysql
+    environment:
+      DB_HOST: mysql
+      DB_USER: appuser
+      DB_PASSWORD: apppass
+      DB_NAME: productosdb
+      DB_PORT: 3306
+      JWT_SECRET: 
+      CREAR_ADMIN: "true"
+      ADMIN_EMAIL: admin@example.com
+      ADMIN_PASSWORD: admin123
+    ports:
+      - "3000:3000"
+    command: npm run dev # o start si usas producción
+    volumes:
+      - .:/app
+
+volumes:
+  mysql_data:
