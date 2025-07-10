@@ -110,8 +110,8 @@ export const insertarProductosIniciales = async () => {
                 descripcion: "Purificador con filtro HEPA para eliminar alérgenos y contaminantes."
             }
         ]);
-        console.log("✅ 10 productos iniciales insertados.");
+        console.log("10 productos iniciales insertados.");
     } else {
-        console.log("ℹ️ Ya existen productos en la base de datos.");
+        console.log("Ya existen productos en la base de datos.");
     }
 };
