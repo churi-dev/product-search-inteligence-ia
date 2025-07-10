@@ -22,13 +22,15 @@ services:
       DB_PASSWORD: apppass
       DB_NAME: productosdb
       DB_PORT: 3306
-      JWT_SECRET: 
+      OPENAI_API_KEY: api_key_gemini
+      JWT_SECRET: token_generate_jwt
+      CREAR_DATA: "true"
       CREAR_ADMIN: "true"
       ADMIN_EMAIL: admin@example.com
       ADMIN_PASSWORD: admin123
     ports:
       - "3000:3000"
-    command: npm run dev # o start si usas producción
+    command: npm run dev 
     volumes:
       - .:/app
 
